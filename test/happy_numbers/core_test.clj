@@ -42,8 +42,15 @@
   )
 
 (defn split-into-numbers [n]
-
+  (let [from-int-to  #(- % (int \0))
+        from-str-to-int #(int %)]
+    (map from-int-to
+      (map from-str-to-int (str n))))
   )
+
+(def n 123)
+
+
 
 (=
  (split-into-numbers 12)
