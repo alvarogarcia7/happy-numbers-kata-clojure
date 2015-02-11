@@ -41,15 +41,15 @@
 
 (count [1 2])
 
-(defn happy-size? [n visited]
+(defn happy-size? [n {initial :initial visited :visited}]
   (if (my-contains n visited)
-      (- (count visited))
+      {:initial initial :visited visited :length (- (count visited))}
     (if (= 1 n)
       (let [visited (conj visited 1)]
-        (count visited))
+         {:initial initial :visited visited :length (count visited)})
       (let [sum-of-squares (sum-squared-numbers (split-into-numbers n))
             new-visited (conj visited n)]
-        (happy-size? sum-of-squares new-visited)))))
+        (happy-size? sum-of-squares {:initial initial :visited new-visited})))))
 
 (= (happy? 1 []) true)
 (= (happy? 4 []) false)
@@ -63,11 +63,27 @@
 
 (range 1 100)
 
-(map #(happy-size? % []) (range 1 1000))
+(map #(happy-size? % {:initial % :visited []}) (range 1 1000))
 
-(apply max (map #(happy-size? % []) (range 1 100)))
+(def happy-size-results
+  (map
+    #(happy-size? % {:initial % :visited []})
+    (range 1 1000000)))
 
-(map #(happy-size? % []) '(1 2))
+(def happy-size-max-length
+  (apply max (map :length happy-size-results)))
+
+(filter #(= happy-size-max-length (:length %)) happy-size-results)
+
+(def map- {:a 1 :b 2})
+map-
+(:a map-)
+
+(def maps- '({:a 1 :b 2} {:a 3 :b 4}))
+(map :a maps-)
+
+(apply max (map :a maps-))
+
 
 
 (sum-squared-numbers (split-into-numbers 10))
