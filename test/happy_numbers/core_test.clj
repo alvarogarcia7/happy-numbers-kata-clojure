@@ -68,12 +68,14 @@
 (def happy-size-results
   (map
     #(happy-size? % {:initial % :visited []})
-    (range 1 1000000)))
+    (range 1 1000)))
 
 (def happy-size-max-length
   (apply max (map :length happy-size-results)))
 
 (filter #(= happy-size-max-length (:length %)) happy-size-results)
+; the results show in length 7: 356, 365, 536, 563, 635, 653 (among other set of numbers)
+; this confirms the mathematical property @trikitrok announced: the number 20 and 02 have the same length as 0**2+0**2 = 2**2+0**2 (commutative property)
 
 (def map- {:a 1 :b 2})
 map-
