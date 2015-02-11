@@ -26,9 +26,24 @@
 (defn is-happy-number [n]
   (= 1 n))
 
+(defn happy? [n visited]
+  (if (my-contains n visited)
+    false
+    (if (= 1 n)
+      true
+      (let [sum-of-squares (sum-squared-numbers (split-into-numbers n))
+            new-visited (conj visited sum-of-squares)]
+        (happy? sum-of-squares new-visited))
+      )))
+
+(happy? 1 [])
+(happy? 4 [])
+
 (=
  (is-happy-number 1)
  true)
+
+(conj [1] 1)
 
 (=
  (is-happy-number 2)
