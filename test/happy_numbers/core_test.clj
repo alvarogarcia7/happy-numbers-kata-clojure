@@ -32,14 +32,43 @@
       (println (str n " " visited))
       false)
     (if (= 1 n)
-      true
+      (do
+        (println (str n " " (conj visited 1)))
+        true)
       (let [sum-of-squares (sum-squared-numbers (split-into-numbers n))
             new-visited (conj visited n)]
         (happy? sum-of-squares new-visited)))))
 
+(count [1 2])
+
+(defn happy-size? [n visited]
+  (if (my-contains n visited)
+      (- (count visited))
+    (if (= 1 n)
+      (let [visited (conj visited 1)]
+        (count visited))
+      (let [sum-of-squares (sum-squared-numbers (split-into-numbers n))
+            new-visited (conj visited n)]
+        (happy-size? sum-of-squares new-visited)))))
+
 (= (happy? 1 []) true)
 (= (happy? 4 []) false)
 (= (happy? 7 []) true)
+
+(= (happy-size? 2 []) 9)
+(= (happy-size? 1 []) 1)
+(happy-size? 7 [])
+
+(apply max '(1 2 3))
+
+(range 1 100)
+
+(map #(happy-size? % []) (range 1 1000))
+
+(apply max (map #(happy-size? % []) (range 1 100)))
+
+(map #(happy-size? % []) '(1 2))
+
 
 (sum-squared-numbers (split-into-numbers 10))
 
