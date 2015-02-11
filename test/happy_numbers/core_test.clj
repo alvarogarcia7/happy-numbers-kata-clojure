@@ -48,10 +48,6 @@
       (map from-str-to-int (str n))))
   )
 
-(def n 123)
-
-
-
 (=
  (split-into-numbers 12)
  '(1, 2))
