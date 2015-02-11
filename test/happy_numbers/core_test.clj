@@ -38,8 +38,13 @@
  (is-happy-number 7)
  true)
 
-(defn sum-squared-numbers [n]
-  )
+(defn sum-squared-numbers [numbers]
+  (reduce
+   +
+   (map #(* % %)
+       numbers)))
+
+(sum-squared-numbers '(1, 2))
 
 (defn split-into-numbers [n]
   (let [from-int-to  #(- % (int \0))
