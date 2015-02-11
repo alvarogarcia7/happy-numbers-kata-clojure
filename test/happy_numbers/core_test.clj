@@ -1,7 +1,8 @@
 (ns happy-numbers.core-test
   (:require [clojure.test :refer :all]
             [happy-numbers.core :refer :all]))
-
+; see README for more information
+; @enriclluelles has a more interesting version in https://gist.github.com/enriclluelles/04cbba5bb1b99feeba62
 (defn my-contains [needle haystack]
   (or
    (some #(= needle %) haystack)
