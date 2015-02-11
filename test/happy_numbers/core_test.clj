@@ -44,7 +44,13 @@
    (map #(* % %)
        numbers)))
 
-(sum-squared-numbers '(1, 2))
+(=
+ (sum-squared-numbers '(1, 2))
+ 5)
+
+(=
+ (sum-squared-numbers '(1, 2, 3, 4))
+ 30)
 
 (defn split-into-numbers [n]
   (let [from-int-to  #(- % (int \0))
