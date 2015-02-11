@@ -20,3 +20,22 @@
 (my-contains 2 [1])
 ; false
 
+(def happy-numbers-less-equal-100
+  [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100])
+
+(defn is-happy-number [n]
+  (= 1 n))
+
+(=
+ (is-happy-number 1)
+ true)
+
+(=
+ (is-happy-number 2)
+ false)
+
+(=
+ (is-happy-number 7)
+ true)
+
+
