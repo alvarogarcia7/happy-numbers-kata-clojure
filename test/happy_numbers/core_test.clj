@@ -24,20 +24,27 @@
   [1, 7, 10, 13, 19, 23, 28, 31, 32, 44, 49, 68, 70, 79, 82, 86, 91, 94, 97, 100])
 
 (defn is-happy-number [n]
-  (= 1 n))
+  (happy? n []))
 
 (defn happy? [n visited]
   (if (my-contains n visited)
-    false
+    (do
+      (println (str n " " visited))
+      false)
     (if (= 1 n)
       true
       (let [sum-of-squares (sum-squared-numbers (split-into-numbers n))
-            new-visited (conj visited sum-of-squares)]
-        (happy? sum-of-squares new-visited))
-      )))
+            new-visited (conj visited n)]
+        (happy? sum-of-squares new-visited)))))
 
-(happy? 1 [])
-(happy? 4 [])
+(= (happy? 1 []) true)
+(= (happy? 4 []) false)
+(= (happy? 7 []) true)
+
+(sum-squared-numbers (split-into-numbers 10))
+
+(happy? 97 [7 49])
+
 
 (=
  (is-happy-number 1)
