@@ -38,4 +38,14 @@
  (is-happy-number 7)
  true)
 
+(defn sum-squared-numbers [n]
+  )
+
+(defn split-into-numbers [n]
+
+  )
+
+(=
+ (split-into-numbers 12)
+ '(1, 2))
 
